@@ -1,0 +1,19 @@
+{% extends "store/base.html" %}
+{% block title %}Our Acoustic Panels | Agri-Acoustic{% endblock %}
+{% block page_id %}products{% endblock %}
+{% block content %}
+<section class="page-head"><div class="container">
+  <h1>Our Acoustic Panels</h1>
+  <p>Choose the perfect panel for your space. Prices shown are sample placeholders.</p>
+  <div class="filters" role="group" aria-label="Filter panels by category">
+    <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+    <button class="chip" data-filter="standard" aria-pressed="false">Standard</button>
+    <button class="chip" data-filter="premium" aria-pressed="false">Premium</button>
+    <button class="chip" data-filter="custom" aria-pressed="false">Custom</button>
+  </div>
+</div></section>
+<section class="section section--tight"><div class="container">
+  <div class="grid grid--3" id="product-grid">{% for p in products %}{% include "store/partials/product_card.html" %}{% endfor %}</div>
+  <p class="empty" id="no-results" hidden>No panels in this category yet. Try another filter.</p>
+</div></section>
+{% endblock %}

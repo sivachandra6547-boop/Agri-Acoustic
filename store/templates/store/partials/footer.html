@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="container footer__grid">
+    <div>
+      <a class="brand" href="{% url 'store:home' %}">{% include "store/partials/logo.html" %}<span>Agri-Acoustic</span></a>
+      <p class="footer__about">Acoustic panels made with agricultural waste. Quieter Spaces. Greener Tomorrow.</p>
+      <ul class="social">
+        {% if site.instagram %}<li><a href="{{ site.instagram }}" rel="noopener">Instagram</a></li>{% endif %}
+        {% if site.linkedin %}<li><a href="{{ site.linkedin }}" rel="noopener">LinkedIn</a></li>{% endif %}
+        {% if site.facebook %}<li><a href="{{ site.facebook }}" rel="noopener">Facebook</a></li>{% endif %}
+        {% if not site.instagram and not site.linkedin and not site.facebook %}<li class="muted">Social links coming soon</li>{% endif %}
+      </ul>
+    </div>
+    <nav aria-label="Footer"><h2>Explore</h2>
+      <ul><li><a href="{% url 'store:home' %}">Home</a></li><li><a href="{% url 'store:home' %}#about">About</a></li>
+      <li><a href="{% url 'store:home' %}#sustainability">Sustainability</a></li><li><a href="{% url 'store:cart' %}">Cart</a></li></ul></nav>
+    <nav aria-label="Products"><h2>Products</h2>
+      <ul><li><a href="{% url 'store:products' %}">All panels</a></li>
+      <li><a href="{% url 'store:products' %}#standard">Standard</a></li><li><a href="{% url 'store:products' %}#premium">Premium</a></li><li><a href="{% url 'store:products' %}#custom">Custom</a></li></ul></nav>
+    <div id="contact"><h2>Contact</h2>
+      <ul class="contact">
+        <li>Email: {% if site.email %}<a href="mailto:{{ site.email }}">{{ site.email }}</a>{% else %}<span class="muted">Add in settings.py</span>{% endif %}</li>
+        <li>Phone: {% if site.phone %}<a href="tel:{{ site.phone }}">{{ site.phone }}</a>{% else %}<span class="muted">Add in settings.py</span>{% endif %}</li>
+        <li>Address: {% if site.address %}{{ site.address }}{% else %}<span class="muted">Add in settings.py</span>{% endif %}</li>
+      </ul></div>
+  </div>
+  <div class="container footer__legal"><small>© Agri-Acoustic. Sample prices and demo checkout only.</small></div>
+</footer>

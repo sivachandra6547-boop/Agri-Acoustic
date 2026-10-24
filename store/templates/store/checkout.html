@@ -1,0 +1,38 @@
+{% extends "store/base.html" %}
+{% block title %}Checkout | Agri-Acoustic{% endblock %}
+{% block page_id %}checkout{% endblock %}
+{% block content %}
+<section class="page-head page-head--sm"><div class="container"><h1>Checkout</h1>
+  {% include "store/partials/steps.html" with current=2 %}</div></section>
+<section class="section section--tight"><div class="container">
+  <div class="empty" id="co-empty" hidden><h2>Nothing to check out</h2><p>Your cart is empty.</p>
+    <a class="btn btn--primary" href="{% url 'store:products' %}">Browse panels</a></div>
+  <form class="two-col" id="checkout-form" novalidate hidden>
+    <div class="stack">
+      <div class="panel"><h2 class="panel__title">Delivery information</h2>
+        <div class="fields">
+          <div class="field field--full"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required placeholder="Enter your name"><p class="error" id="name-err"></p></div>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"><p class="error" id="email-err"></p></div>
+          <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" required placeholder="10-digit mobile number"><p class="error" id="phone-err"></p></div>
+          <div class="field field--full"><label for="address">Delivery address</label><input id="address" name="address" autocomplete="street-address" required placeholder="House no., street, area"><p class="error" id="address-err"></p></div>
+          <div class="field"><label for="city">City</label><input id="city" name="city" autocomplete="address-level2" required><p class="error" id="city-err"></p></div>
+          <div class="field"><label for="state">State</label><input id="state" name="state" autocomplete="address-level1" required><p class="error" id="state-err"></p></div>
+          <div class="field"><label for="pin">PIN code</label><input id="pin" name="pin" autocomplete="postal-code" inputmode="numeric" maxlength="6" required placeholder="6 digits"><p class="error" id="pin-err"></p></div>
+        </div>
+      </div>
+      <fieldset class="panel pay"><legend class="panel__title">Payment method</legend>
+        <p class="notice">Demo checkout. No payment gateway is connected, and no card or UPI details are collected or stored.</p>
+        <label class="pay__opt"><input type="radio" name="pay" value="UPI" checked><span>UPI</span></label>
+        <label class="pay__opt"><input type="radio" name="pay" value="Credit / Debit Card"><span>Credit / Debit Card</span></label>
+        <label class="pay__opt"><input type="radio" name="pay" value="Net Banking"><span>Net Banking</span></label>
+        <label class="pay__opt"><input type="radio" name="pay" value="Cash on Delivery"><span>Cash on Delivery</span></label>
+      </fieldset>
+    </div>
+    <aside class="panel summary" aria-label="Order summary"><h2 class="panel__title">Your order</h2>
+      <ul class="mini-list" id="mini-list"></ul><div id="summary"></div>
+      <button class="btn btn--primary btn--block btn--lg" type="submit" id="place-order">Place demo order</button>
+      <a class="btn btn--ghost btn--block" href="{% url 'store:cart' %}">Back to cart</a>
+    </aside>
+  </form>
+</div></section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "store/base.html" %}
+{% block title %}Your Cart | Agri-Acoustic{% endblock %}
+{% block page_id %}cart{% endblock %}
+{% block content %}
+<section class="page-head page-head--sm"><div class="container"><h1>Your Cart</h1>
+  {% include "store/partials/steps.html" with current=1 %}</div></section>
+<section class="section section--tight"><div class="container">
+  <div class="empty" id="cart-empty" hidden>
+    <h2>Your cart is empty</h2><p>Add a panel to get started.</p>
+    <a class="btn btn--primary" href="{% url 'store:products' %}">Browse panels</a>
+  </div>
+  <div class="two-col" id="cart-filled" hidden>
+    <div class="panel"><h2 class="panel__title">Items</h2><ul class="cart-list" id="cart-list"></ul></div>
+    <aside class="panel summary" aria-label="Order summary"><h2 class="panel__title">Order summary</h2>
+      <div id="summary"></div>
+      <a class="btn btn--primary btn--block" href="{% url 'store:checkout' %}">Proceed to Checkout</a>
+      <a class="btn btn--ghost btn--block" href="{% url 'store:products' %}">Continue Shopping</a>
+    </aside>
+  </div>
+</div></section>
+{% endblock %}

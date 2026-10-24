@@ -1,0 +1,94 @@
+{% extends "store/base.html" %}{% load static %}
+{% block page_id %}home{% endblock %}
+{% block body_class %}has-hero{% endblock %}
+{% block content %}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__bg" role="img" aria-label="Modern living room with natural wood and green acoustic wall panels"></div>
+  <div class="container hero__content">
+    <h1 id="hero-title">Quieter Spaces.<br>Greener Tomorrow.</h1>
+    <p>Transform your space with thoughtfully designed acoustic panels inspired by nature and made with sustainability in mind.</p>
+    <div class="btn-row">
+      <a class="btn btn--primary btn--lg" href="{% url 'store:products' %}">Explore Products</a>
+      <a class="btn btn--light btn--lg" href="#about">Discover Our Story</a>
+    </div>
+  </div>
+  <ul class="hero__benefits container">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C4 11 9 5 19 5c0 9-5 14-14 14Zm0 0c3-4 6-7 10-9"/></svg>Eco-Friendly Materials</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12v0M8 8v8M12 4v16M16 8v8M20 12v0"/></svg>Designed to Reduce Echo</li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4zM10 20v-6h4v6"/></svg>Modern, Stylish Designs</li>
+  </ul>
+</section>
+
+<section class="section section--cream" id="about" aria-labelledby="about-title">
+  <div class="container about">
+    <div class="about__text">
+      <h2 id="about-title">Nature’s Waste. Tomorrow’s Acoustic Innovation.</h2>
+      <p>Every harvest leaves behind rice straw, banana stems and coconut husks. Most are burned or discarded. We turn these fibres into acoustic panels that soften a room and look good doing it.</p>
+      <p class="muted">Material blends and acoustic performance are in development. Test results will be published here once independently verified.</p>
+      <a class="btn btn--outline" href="#sustainability">Learn More</a>
+    </div>
+    <ol class="journey" aria-label="From agricultural waste to acoustic panel">
+      <li><img src="{% static 'images/about/waste.jpg' %}" alt="Rice straw, banana fibre and coconut husks" loading="lazy"><span>1. Agricultural waste</span></li>
+      <li class="journey__arrow" aria-hidden="true"><svg viewBox="0 0 48 16"><path d="M2 8h42m-8-6 8 6-8 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li><img src="{% static 'images/about/panels.jpg' %}" alt="Finished fibre acoustic panels in green, terracotta and natural tones" loading="lazy"><span>2. Acoustic panels</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="section section--forest" aria-labelledby="why-title">
+  <div class="container">
+    <h2 id="why-title">Why Choose Agri-Acoustic?</h2>
+    <div class="why">
+      <div><span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C4 11 9 5 19 5c0 9-5 14-14 14Zm0 0c3-4 6-7 10-9"/></svg></span><h3>Sustainable Materials</h3><p>Made from rice straw, banana fibre and coconut fibre.</p></div>
+      <div><span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h0M8 8v8M12 4v16M16 8v8M20 12h0"/></svg></span><h3>Sound and Echo Management</h3><p>Designed to reduce echo and soften noisy rooms.</p></div>
+      <div><span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 0 0 3-3c0-6-4-11-8-11ZM7.5 11h.01M10 7.5h.01M15 8h.01"/></svg></span><h3>Contemporary Design</h3><p>Natural textures and shapes for any interior.</p></div>
+      <div><span class="why__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h10M7 9h10M7 5c5 0 5 7 0 7h-0l7 7"/></svg></span><h3>Accessible Pricing</h3><p>Aimed at homes, schools and small businesses.</p></div>
+    </div>
+    <p class="why__note">Performance and environmental benefits shown here are design goals until supported by test data.</p>
+  </div>
+</section>
+
+<section class="section" id="products" aria-labelledby="prod-title">
+  <div class="container">
+    <div class="section__head"><h2 id="prod-title">Explore Our Products</h2><a class="link" href="{% url 'store:products' %}">View all panels</a></div>
+    <div class="grid grid--3">{% for p in products %}{% include "store/partials/product_card.html" %}{% endfor %}</div>
+    <p class="muted note">Prices are sample placeholders until final pricing is confirmed.</p>
+  </div>
+</section>
+
+<section class="section section--cream" aria-labelledby="spaces-title">
+  <div class="container">
+    <h2 id="spaces-title">Designed for Every Space</h2>
+    <ul class="spaces">
+      {% for name, img in spaces %}
+      <li><a href="{% url 'store:products' %}"><img src="{% static 'images/'|add:img %}" alt="{{ name }} interior" loading="lazy"><span>{{ name }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="story" id="sustainability" aria-labelledby="story-title">
+  <div class="container story__inner">
+    <div class="story__card">
+      <h2 id="story-title">Building Quieter Spaces with Agricultural Waste.</h2>
+      <p>Crop residue is a problem for farmers and for the air we share. By giving it a second life inside our walls, we aim to reduce burning, support farming communities and make quieter rooms more accessible.</p>
+      <a class="btn btn--light" href="{% url 'store:products' %}">Shop the panels</a>
+    </div>
+    <ul class="story__goals">
+      <li><strong>Less waste</strong>Residue used, not burned</li>
+      <li><strong>Cleaner air</strong>A lower-impact material</li>
+      <li><strong>Stronger communities</strong>Fibre sourced from farms</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section cta" aria-labelledby="cta-title">
+  <div class="container">
+    <h2 id="cta-title">Ready to Transform Your Space?</h2>
+    <div class="btn-row btn-row--center">
+      <a class="btn btn--primary btn--lg" href="{% url 'store:products' %}">Explore Products</a>
+      <a class="btn btn--outline btn--lg" href="#contact">Contact Us</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

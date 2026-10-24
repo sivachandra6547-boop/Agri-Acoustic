@@ -1,0 +1,55 @@
+{% extends "store/base.html" %}{% load static %}
+{% block title %}{{ product.name }} | Agri-Acoustic{% endblock %}
+{% block page_id %}detail{% endblock %}
+{% block content %}
+<section class="section section--tight"><div class="container">
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="{% url 'store:products' %}">Products</a> / <span>{{ product.name }}</span></nav>
+  <div class="detail" data-id="{{ product.id }}" data-price="{{ product.price }}">
+    <div class="gallery">
+      <div class="gallery__main"><img id="gallery-main" src="{% static 'images/'|add:product.image %}" alt="{{ product.name }} panel"></div>
+      <div class="gallery__thumbs">
+        <button type="button" class="thumb is-active" data-src="{% static 'images/'|add:product.image %}" aria-label="View main photo"><img src="{% static 'images/'|add:product.image %}" alt=""></button>
+        <button type="button" class="thumb" data-src="{% static 'images/about/panels.jpg' %}" aria-label="View panel colour range"><img src="{% static 'images/about/panels.jpg' %}" alt=""></button>
+        <button type="button" class="thumb" data-src="{% static 'images/about/waste.jpg' %}" aria-label="View source fibres"><img src="{% static 'images/about/waste.jpg' %}" alt=""></button>
+      </div>
+    </div>
+    <div class="detail__info">
+      <span class="tag tag--{{ product.category }}">{{ product.category|capfirst }}</span>
+      <h1>{{ product.name }}</h1>
+      <p class="price price--lg">₹{{ product.price }} <small>/ panel (sample price)</small></p>
+      <p>{{ product.description }}</p>
+      <dl class="spec-list">
+        <div><dt>Material</dt><dd>{{ product.material }}</dd></div>
+        <div><dt>Size</dt><dd>{{ product.size }}</dd></div>
+        <div><dt>Thickness</dt><dd>{{ product.thickness }}</dd></div>
+      </dl>
+      <fieldset class="variants"><legend>Finish</legend>
+        {% for v in product.variants %}
+        <label class="variant"><input type="radio" name="variant" value="{{ v }}" {% if forloop.first %}checked{% endif %}><span>{{ v }}</span></label>
+        {% endfor %}
+      </fieldset>
+      <div class="buy-row">
+        <div class="qty" role="group" aria-label="Quantity">
+          <button type="button" data-qty="-1" aria-label="Decrease quantity">−</button>
+          <input id="qty" type="number" value="1" min="1" max="99" aria-label="Quantity" inputmode="numeric">
+          <button type="button" data-qty="1" aria-label="Increase quantity">+</button>
+        </div>
+        <p class="subtotal">Subtotal <strong id="subtotal">₹{{ product.price }}</strong></p>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn--outline btn--lg" type="button" id="add-to-cart">Add to Cart</button>
+        <button class="btn btn--primary btn--lg" type="button" id="buy-now">Buy Now</button>
+      </div>
+      <div class="info-list">
+        <details open><summary>Care</summary><p>Wipe gently with a dry or barely damp cloth. Keep away from standing water and direct moisture.</p></details>
+        <details><summary>Delivery</summary><p>Delivery time and charges are estimated at checkout and confirmed after your order is reviewed.</p></details>
+        <details><summary>Installation</summary><p>Panels can be fixed to a clean, dry wall with a suitable adhesive or fixings. Ask us if you need guidance.</p></details>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="section section--cream"><div class="container">
+  <h2>You may also like</h2>
+  <div class="grid grid--3">{% for p in related %}{% include "store/partials/product_card.html" %}{% endfor %}</div>
+</div></section>
+{% endblock %}

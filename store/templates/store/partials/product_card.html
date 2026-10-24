@@ -1,0 +1,17 @@
+{% load static %}
+<article class="card product" data-category="{{ p.category }}">
+  <a class="product__media" href="{% url 'store:product_detail' p.slug %}" tabindex="-1" aria-hidden="true">
+    <img src="{% static 'images/'|add:p.image %}" alt="" loading="lazy">
+  </a>
+  <div class="product__body">
+    <span class="tag tag--{{ p.category }}">{{ p.category|capfirst }}</span>
+    <h3><a href="{% url 'store:product_detail' p.slug %}">{{ p.name }}</a></h3>
+    <p class="muted">{{ p.tagline }}</p>
+    <p class="specs">{{ p.size }} · {{ p.thickness }}</p>
+    <p class="price">₹{{ p.price }} <small>/ panel</small></p>
+    <div class="product__actions">
+      <a class="btn btn--ghost" href="{% url 'store:product_detail' p.slug %}">View Details</a>
+      <button class="btn btn--primary" type="button" data-buy="{{ p.id }}">Buy Now</button>
+    </div>
+  </div>
+</article>

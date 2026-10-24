@@ -1,0 +1,22 @@
+{% extends "store/base.html" %}
+{% block title %}Order Confirmation | Agri-Acoustic{% endblock %}
+{% block page_id %}confirmation{% endblock %}
+{% block content %}
+<section class="section confirm"><div class="container container--narrow">
+  <div id="conf-empty" hidden class="empty"><h2>No recent order found</h2><p>Place a demo order from checkout to see this page.</p>
+    <a class="btn btn--primary" href="{% url 'store:products' %}">Browse panels</a></div>
+  <div id="conf-filled" hidden>
+    <div class="confirm__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1>Thank You for Choosing Agri-Acoustic!</h1>
+    {% include "store/partials/steps.html" with current=4 %}
+    <p class="notice notice--center">This is a frontend demo. No payment was taken and no order was placed with a backend.</p>
+    <p>Demo reference: <strong id="conf-ref"></strong></p>
+    <div class="btn-row btn-row--center">
+      <a class="btn btn--primary" href="{% url 'store:products' %}">Continue Shopping</a>
+      <button class="btn btn--outline" type="button" id="view-details" aria-expanded="false" aria-controls="conf-details">View Order Details</button>
+    </div>
+    <div class="panel" id="conf-details" hidden><h2 class="panel__title">Order summary</h2>
+      <p id="conf-to" class="muted"></p><ul class="mini-list" id="mini-list"></ul><div id="summary"></div></div>
+  </div>
+</div></section>
+{% endblock %}
