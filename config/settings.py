@@ -1,8 +1,18 @@
+import os
+
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "dev-only-change-me"
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [    "agri-acoustic.vercel.app",
+    ".vercel.app",
+    "localhost",
+    "127.0.0.1",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://agri-acoustic.vercel.app",
+]
 INSTALLED_APPS = ["django.contrib.staticfiles", "store"]
 MIDDLEWARE = ["django.middleware.security.SecurityMiddleware",
               "django.middleware.common.CommonMiddleware"]
