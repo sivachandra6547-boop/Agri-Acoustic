@@ -26,3 +26,5 @@ local_settings.py
 .idea/
 .DS_Store
 Thumbs.db
+
+.build_venv/
