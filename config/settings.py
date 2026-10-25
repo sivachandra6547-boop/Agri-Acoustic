@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -47,19 +46,20 @@ WSGI_APPLICATION = "config.wsgi.application"
 USE_TZ = True
 
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles_build" / "static"
 
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Fill these with REAL details. Empty values show a placeholder in the footer.
 SITE = {
     "email": "",
     "phone": "",
@@ -69,8 +69,8 @@ SITE = {
     "facebook": "",
 }
 
+# Placeholder shipping rules (also mirrored in static/js/main.js).
 SHIPPING = {
     "flat": 100,
     "free_above": 2000,
 }
-

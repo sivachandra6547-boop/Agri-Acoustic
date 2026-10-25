@@ -160,7 +160,7 @@ main{padding-top:72px}.has-hero main{padding-top:0}
 .buy-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}.subtotal{margin:0}.subtotal strong{font:600 1.3rem var(--font-d);margin-left:.4rem}
 .qty{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;background:#fff;overflow:hidden}
 .qty button{width:44px;height:44px;border:0;background:none;font-size:1.2rem;cursor:pointer}.qty button:hover{background:var(--cream)}
-.qty input{width:48px;text-align:center;border:0;font:600 1rem var(--font-b);background:none;-moz-appearance:textfield}
+.qty input{width:48px;text-align:center;border:0;font:600 1rem var(--font-b);background:none;-moz-appearance:textfield;appearance:textfield}
 .qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none}
 .info-list{margin-top:2rem}.info-list details{border-top:1px solid var(--line);padding:.8rem 0}
 .info-list summary{font-weight:600;cursor:pointer}.info-list p{margin:.6rem 0 0;color:var(--muted)}
